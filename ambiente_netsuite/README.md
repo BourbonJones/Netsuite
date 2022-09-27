@@ -6,6 +6,9 @@ precisa ser implementado uma vez que ele é chamado em qualquer outro script ser
 Observaremos o ambiente em seguida...
 
 ## Documentos
+![Documentos](/imgs/docs_suitescripts.jpg)
 ## Registros de Scripts
+![Script](/imgs/script_record.jpg)
 ## Implementação de Scripts
+![Implementação](/imgs/script_deploy.jpg)
 ## Registros de Dados
