@@ -19,7 +19,7 @@ Tudo que aprendi de Netsuite
 ## Funções Importantes
 Aqui serão apresentadas algumas funções de Netsuite que facilitará sua vida quando surgir dúvidas de como
 fazer certas ações comuns no desenvolvimento web.
-[Lista de Funções]()
+[Lista de Funções](./lista_de_funcoes)
 
 ## Extensões Importantes
 - Netsuite Field Explorer  
