@@ -222,5 +222,44 @@ Essa função é obrigatória neste script. Em outras palavras ela diz: "Ao carr
 Para exemplos de todas as funções, acessar [Netsuite Help Center](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4387798404.html#bridgehead_4484779426).
 
 
+## Map/Reduce
+A arquitetura do **Map/Reduce** é da seguinte forma...
 
+~~~javascript
+/**
+ * @NApiVersion 2.1
+ * @NScriptType MapReduceScript
+ */
+define(['N/currentRecord', 'N/file', 'N/log', 'N/record', 'N/search', 'N/ui/serverWidget', 'N/runtime'],
+    (currentRecord, file, log, record, search, serverWidget, runtime) => {
 
+        const getInputData = (inputContext) => {
+        }
+
+        const map = (mapContext) => {
+        }
+        
+        const reduce = (reduceContext) => {
+
+        }
+        const summarize = (summaryContext) => {
+
+        }
+
+        return {getInputData, map, reduce, summarize}
+
+    });
+
+~~~
+- getInputData:
+Função utilizada para obter parêmetros de responses ou resultados de busca. Ele deve retornar um array.
+- map:
+O array retornado pelo *getInputData* é automaticamente parâmetro dp *map*. Aqui se faz o tratamento de dados para cada elemento do array. Ele retorna o array modificado.
+- reduce:
+O array retornado pelo *map* é automaticamente parâmetro do *reduce*. Aqui se faz o tratamento de dados para cada elemento do array. Ele retorna um único valor.
+- summarize:
+Aqui é onde se cria ou edita registros, listas e arquivos. Esta última etapa, a lógica de código volta ao normal, ou seja, se criarmos um registro aqui, ele criará apenas um registro. Caso fosse feito no map ou reduce, seria criado varios registros dependendo do tamanho do array passado como parâmetro, é importante se atentar nisso.  
+
+De formar geral, o **map/reduce** é ideal para funcionalidades que requerem alto rendimento como pesquisas/requisições múltiplas ou grandes do banco de dados. Estas sendo feita em outros scripts como num Suitelet ou User Event, ultrapassariam o limite de tempo de execussão esperado para eles no Netsuite.  
+Outro fator importante, é que o **map/reduce** pode ser implementado para que ocorra a cada determinada quantidade de tempo.  
+Para mais detalhes, acessar [Netsuite Help Center](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4480364878.html).
