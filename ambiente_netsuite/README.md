@@ -9,6 +9,12 @@ Observaremos o ambiente em seguida...
 ![Documentos](./imgs/docs_suitescripts.jpg)
 ## Registros de Scripts
 ![Script](./imgs/script_record.jpg)
+Para criar um registro, primeiro o script a ser implementado é selecionado (ele dever estar no documentos), e então iremos pra tela de criação.
+![tela de criação](./imgs/criacao_script.jpg)
+Possivelmente haverá padrões de nomes e ids que deverá ser colocado dependendo da empresa em que você trabalha.
 ## Implementação de Scripts
 ![Implementação](./imgs/script_deploy.jpg)
+Iremos, assim, para a tela de implementação.
+![tela de implementação](./imgs/deploying_script.jpg)
+Depois de criar o registro de script, é hora de implementa-lo.
 ## Registros de Dados
