@@ -3,11 +3,12 @@ Tudo que aprendi de Netsuite
 
 # Resumo
 
-## Tipos de scripts
+## Tipos de Scripts
 - Suitelet
 - User Event
 - Client Script
-- Map/Reduce
+- Map/Reduce  
+[Tipos de Scripts](./tipos_de_scripts)
 
 ## Ambiente Netsuite
 - Documentos
