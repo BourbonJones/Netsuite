@@ -5,12 +5,7 @@ Além disso, é necessário registra-lo e implementá-lo. Vale lembrar que apena
 precisa ser implementado uma vez que ele é chamado em qualquer outro script server-side (Suitlet , userevent, etc).  
 Observaremos o ambiente em seguida...
 
-##Documentos
-
-##Registros de Dados
-
-
-##Registros de Scripts
-
-
-##Implementação de Scripts
+## Documentos
+## Registros de Scripts
+## Implementação de Scripts
+## Registros de Dados
