@@ -146,7 +146,80 @@ Vamos observar a arquitetura de um código dentro de alguma dessas funções.
 ~~~
 Na linha `if(ctx.type == ctx.UserEventType.VIEW){` temos o objeto **ctx.type**. Ele referencia qual é o tipo do contexto onde está sendo trabalhado.  
 Os principais valores são: VIEW (tela de visualização de um registro), CREATE (tela de criação) e EDIT (tela de edição).
-Cada um desses melhor ententido em [Ambiente Netsuite]().
+Cada um desses melhor ententido em [Ambiente Netsuite](./ambiente_netsuite).
+
+## Client Script
+~~~javascript
+/**
+ * @NApiVersion 2.x
+ * @NScriptType ClientScript
+ * @NModuleScope SameAccount
+ */
+define(['N/currentRecord', 'N/url'], function(currentRecord, url) {
+    
+    function pageInit(scriptContext) {
+
+    }
+
+    function fieldChanged(scriptContext) {
+
+    }
+
+    function postSourcing(scriptContext) {
+
+    }
+
+    function sublistChanged(scriptContext) {
+
+    }
+
+    function lineInit(scriptContext) {
+
+    }
+
+    function validateField(scriptContext) {
+
+    }
+
+    function validateLine(scriptContext) {
+
+    }
+
+    function validateInsert(scriptContext) {
+
+    }
+
+    function validateDelete(scriptContext) {
+
+    }
+
+    function saveRecord(scriptContext) {
+
+    }
+
+    return {
+        pageInit: pageInit,
+        fieldChanged: fieldChanged,
+        postSourcing: postSourcing,
+        sublistChanged: sublistChanged,
+        lineInit: lineInit,
+        validateField: validateField,
+        validateLine: validateLine,
+        validateInsert: validateInsert,
+        validateDelete: validateDelete,
+        saveRecord: saveRecord
+    };
+    
+});
+~~~
+No **Client Script**, temos essas funções possíveis em sua arquitetura de código. Dentre elas, vale destacar duas:
+- pageInit:
+Essa função é obrigatória neste script. Em outras palavras ela diz: "Ao carregar a página faça isso...". Sem essa função, mesmo que vazia, todo o script entende que a página nunca foi carrega/renderizada, e portanto, não executa nada.
+
+- fieldChanged:
+É utilizado toda vez que algo deve ser feito quando algum campo é mudado.
+
+Para exemplos de todas as funções, acessar [Netsuite Help Center](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4387798404.html#bridgehead_4484779426).
 
 
 
