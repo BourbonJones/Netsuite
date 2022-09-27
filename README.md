@@ -16,6 +16,11 @@ Tudo que aprendi de Netsuite
 - Registros de Scripts
 - Implementação de Scripts
 
+## Funções Importantes
+Aqui serão apresentadas algumas funções de Netsuite que facilitará sua vida quando surgir dúvidas de como
+fazer certas ações comuns no desenvolvimento web.
+[Lista de Funções]()
+
 ## Extensões Importantes
 - Netsuite Field Explorer  
 Mostra todos os campos existentes no registro numa telinha
