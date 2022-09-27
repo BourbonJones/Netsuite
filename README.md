@@ -14,8 +14,8 @@ Tudo que aprendi de Netsuite
 - Documentos
 - Registros de Dados
 - Registros de Scripts
-- Implementação de Scripts
-
+- Implementação de Scripts  
+[Ambiente Netsuite](./ambiente_netsuite)
 ## Funções Importantes
 Aqui serão apresentadas algumas funções de Netsuite que facilitará sua vida quando surgir dúvidas de como
 fazer certas ações comuns no desenvolvimento web.
