@@ -146,7 +146,7 @@ Vamos observar a arquitetura de um código dentro de alguma dessas funções.
 ~~~
 Na linha `if(ctx.type == ctx.UserEventType.VIEW){` temos o objeto **ctx.type**. Ele referencia qual é o tipo do contexto onde está sendo trabalhado.  
 Os principais valores são: VIEW (tela de visualização de um registro), CREATE (tela de criação) e EDIT (tela de edição).
-Cada um desses melhor ententido em [Ambiente Netsuite](./ambiente_netsuite).
+Cada um desses melhor ententido em [Ambiente Netsuite](../ambiente_netsuite).
 
 ## Client Script
 ~~~javascript
