@@ -12,7 +12,7 @@ Exemplo:
 *
 */
 
-define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, Log) => {
+define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, log) => {
 
     const onRequest = (scriptContext) => {
 
@@ -22,6 +22,10 @@ define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, Log) => {
 
       ctx.response.writePage(form);
     }
+    
+     return {
+        onRequest: onRequest
+    };
 }
 ~~~
 
@@ -67,6 +71,10 @@ define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, Log) => {
 
       ctx.response.writePage(form);
     }
+    
+    return {
+        onRequest: onRequest
+    };
 }
 ~~~
 Neste caso, o valor encontrado da pesquisa feita é colocada no campo criado *info*.
@@ -91,7 +99,11 @@ define(['N/currentRecord', 'N/search'], (currentRecord, search) => {
 
         }
 
-        return {beforeLoad, beforeSubmit, afterSubmit}
+        return {
+        beforeLoad: beforeLoad,
+        beforeSubmit: beforeSubmit,
+        afterSubmit: afterSubmit
+        }
 
     });
 ~~~
