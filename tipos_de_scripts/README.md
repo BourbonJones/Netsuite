@@ -100,9 +100,9 @@ define(['N/currentRecord', 'N/search'], (currentRecord, search) => {
         }
 
         return {
-        beforeLoad: beforeLoad,
-        beforeSubmit: beforeSubmit,
-        afterSubmit: afterSubmit
+            beforeLoad: beforeLoad,
+            beforeSubmit: beforeSubmit,
+            afterSubmit: afterSubmit
         }
 
     });
