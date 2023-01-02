@@ -44,7 +44,7 @@ Além disso, apesar de ser um objeto de renderização, o **Suitelet** ainda pod
 *
 */
 
-define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, Log) => {
+define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, log) => {
 
     const onRequest = (scriptContext) => {
 
