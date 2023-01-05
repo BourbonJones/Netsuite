@@ -90,13 +90,15 @@ O **User Event** é um tipo de script aplicado a registros do Netsuite. Ele é c
 define(['N/currentRecord', 'N/search'], (currentRecord, search) => {
         
         const beforeLoad = (scriptContext) => {
-
+            var registro_atual = ctx.NewRecord;
         }
+        
         const beforeSubmit = (scriptContext) => {
-
+            var registro_atual = ctx.NewRecord;
         }
+        
         const afterSubmit = (scriptContext) => {
-
+            var registro_atual = ctx.NewRecord;
         }
 
         return {
@@ -111,7 +113,9 @@ Dentro da sua lógica, deve ser aplciada pelo menos umas dessas 3 funções: **b
 - beforeLoad: tudo que está dentro dele é feito antes da renderização do registro.
 - beforeSubmit: quando o botão de submissão do registro é acionado, ele aplicará o código dentro dele antes que a submissão de fato ocorra.  
 Normalmente utilizado para verificar campos obrigatórios ou valores que querem ser evitados a algum campo específico.
-- afterSubmit: códigos que devem ser executados depois de feita uma submissão, sendo uma atualização em algum registro ou arquivo do Netsuite.  
+- afterSubmit: códigos que devem ser executados depois de feita uma submissão, sendo uma atualização em algum registro ou arquivo do Netsuite.
+
+Para mexer no registro onde o script está sendo executado, deve chamar pelo contexto: `ctx.newRecord` 
 
 Vamos observar a arquitetura de um código dentro de alguma dessas funções.
 ~~~javascript
@@ -224,12 +228,16 @@ define(['N/currentRecord', 'N/url'], function(currentRecord, url) {
     
 });
 ~~~
-No **Client Script**, temos essas funções possíveis em sua arquitetura de código. Dentre elas, vale destacar duas:
+No **Client Script**, temos essas funções nativas possíveis em sua arquitetura de código. Dentre elas, vale destacar duas:
 - pageInit:
 Essa função é obrigatória neste script. Em outras palavras ela diz: "Ao carregar a página faça isso...". Sem essa função, mesmo que vazia, todo o script entende que a página nunca foi carrega/renderizada, e portanto, não executa nada.
 
 - fieldChanged:
 É utilizado toda vez que algo deve ser feito quando algum campo é mudado.
+
+É possível também adicionar outras funções e customiza-las de acordo com a lógica necessária no seu projeto. Normalmente essas funções são chamadas por botões criados no Suitelet ou UserEvent
+
+A referência para o registro onde o script é executado é dado pela função: `ctx.currentRecord.get()` da biblioteca `"N/currentRecord"`.
 
 Para exemplos de todas as funções, acessar [Netsuite Help Center](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4387798404.html#bridgehead_4484779426).
 
