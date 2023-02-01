@@ -31,7 +31,7 @@ Após entender um pouco da burocracia para testar/aplicar os scripts, vamos para
 Quase todos os dados que estão na base de dados do Netsuite e são tratados pelos scripts, encontram-se e são divididos em **Registros**. Há registros padrões do netsuite e personalizados, mas podemos lidar com ambos da mesma maneira.
 
 O corpo de um registro é dado desda forma:
-![Imagem de um Registro]()
+![Imagem de um Registro](./imgs/registro_imagem.jpg)
 
 Por trás do visual, o que nos interessa está aqui:
 ![Imagem da extensão]()
