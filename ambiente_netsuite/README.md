@@ -34,7 +34,7 @@ O corpo de um registro é dado desda forma:
 ![Imagem de um Registro](./imgs/registro_imagem.jpg)
 
 Por trás do visual, o que nos interessa está aqui:
-![Imagem da extensão]()
+![Imagem da extensão](./imgs/extensao_imagem.jpg)
 
 Cada registro possui algumas características importantes:
 - typeRecord: tipo do registro (existem n registros de um mesmo tipo).
