@@ -84,30 +84,26 @@ O **User Event** é um tipo de script aplicado a registros do Netsuite. Ele é c
 
 ~~~javascript
 /**
- * @NApiVersion 2.1
- * @NScriptType UserEventScript
+ *@NApiVersion 2.x
+ *@NScriptType UserEventScript
  */
-define(['N/currentRecord', 'N/search'], (currentRecord, search) => {
-        
-        const beforeLoad = (scriptContext) => {
-            var registro_atual = ctx.NewRecord;
-        }
-        
-        const beforeSubmit = (scriptContext) => {
-            var registro_atual = ctx.NewRecord;
-        }
-        
-        const afterSubmit = (scriptContext) => {
-            var registro_atual = ctx.NewRecord;
-        }
+ define(['N/log'], function (log) {
 
-        return {
-            beforeLoad: beforeLoad,
-            beforeSubmit: beforeSubmit,
-            afterSubmit: afterSubmit
-        }
-
-    });
+    function beforeLoad(scriptContext) {
+    };
+    
+    function beforeSubmit(scriptContext) {
+    };
+    
+    function afterSubmit(scriptContext) {
+    };
+  
+    return {
+      beforeLoad: beforeLoad,
+      beforeSubmit: beforeSubmit,
+      afterSubmit: afterSubmit
+    }
+  });
 ~~~
 Dentro da sua lógica, deve ser aplciada pelo menos umas dessas 3 funções: **beforeLoad**,  **beforeSubmit**,  **afterSubmit**.  
 - beforeLoad: tudo que está dentro dele é feito antes da renderização do registro.
@@ -122,43 +118,27 @@ Vamos observar a arquitetura de um código dentro de alguma dessas funções.
 /**
  *@NApiVersion 2.x
  *@NScriptType UserEventScript
- *@Authors Gabriel Scarpelini & Rafael Oliveira
  */
- define(['N/log', 'N/record', 'N/currentRecord'], function(log, record, currentRecord) {
+ define(['N/log', 'N/record', 'N/currentRecord', 'N/search'], function (log, record, currentRecord, search) {
 
     function beforeLoad(ctx) {
-        var form = ctx.form;
-        var registro_atual = ctx.newRecord;    
-        if(ctx.type == ctx.UserEventType.VIEW){
-
-            try{
-                var cobranca = registro_atual.getSublistValue({
-                    sublistId: "links",
-                    fieldId: "id",
-                    line: 0
-                });
-
-                registro_atual.setValue({
-                    fieldId: "custbody_lrc_cobranca",
-                     value: cobranca
-                });
-
-                //record.submitFields({
-                //    type: "purchaseorder",
-                //    id: registro_atual.id,
-                //    values: {"custbody_lrc_cobranca": cobranca}
-                //});
-                
-            }catch(erro){
-                log.error("ERRO", erro);
-            }
-        }
-    }
-
+      var registro = ctx.newRecord;
+      var form = ctx.form;
+  
+      if (ctx.type == ctx.UserEventType.VIEW) { //edição, criação e edição em linha do registro.
+  
+        form.addButton({
+          id: "custpage_rsc_checarduplicidade", //id do botão
+          label: "Checar duplicidade",          //Nome do botão
+          functionName: "enviarDuplicidade"     //função que o "parâmetro" clientScript puxa
+        });
+      };
+    };
+  
     return {
-        beforeLoad: beforeLoad
+      beforeLoad: beforeLoad
     }
-});
+  });
 ~~~
 Na linha `if(ctx.type == ctx.UserEventType.VIEW){` temos o objeto **ctx.type**. Ele referencia qual é o tipo do contexto onde está sendo trabalhado.  
 Os principais valores são: VIEW (tela de visualização de um registro), CREATE (tela de criação) e EDIT (tela de edição).
