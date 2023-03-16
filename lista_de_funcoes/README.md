@@ -52,7 +52,7 @@ define(['N/record', 'N/search', 'N/log', 'N/currentRecord', 'N/url'], function (
         ChecarDuplicidade: ChecarDuplicidade
     };
 });
-~~~
+~~~javascript
 ## N/file
 Serve para menipulção de arquivos. Você pode criar, carregar, excluir arquivos do netsuite (uma gama de tipos de arquivos, desde textos e pdfs até códigos).
 Exemplo em cógido:
@@ -69,9 +69,39 @@ function Arquivos(lista_id_file) {
 Nesse trecho de código, ele recebe uma lista de ids e verifica se existem arquivos com aqueles ids no ambiente.
 
 ## N/log
-Como utilizado acima, ele é equivalente ao console.log do javscript. Você pode verivicar seus logs na aba `eXECUTION lOG` do arquivo de implementação do seu código.
-## N/record
-## N/search
-## N/ui/serverWidget
-## N/url
-## N/query
+Como utilizado acima, ele é equivalente ao console.log do javscript. Você pode verivicar seus logs na aba `Execution Log` do arquivo de implementação do seu código.
+
+![LOGS](logs_netsuite.jpg)
+
+## N/task
+Existem algumas aplicações que você pode chamar rodar um script a partir de outro.
+
+Exemplo:
+~~~javascript
+## N/file
+Serve para menipulção de arquivos. Você pode criar, carregar, excluir arquivos do netsuite (uma gama de tipos de arquivos, desde textos e pdfs até códigos).
+Exemplo em cógido:
+~~~javascript
+function afterSubmit(context) {
+        var lote = context.newRecord
+        var scriptTask = task.create({
+            taskType: task.TaskType.MAP_REDUCE,
+            scriptId: 'customscript_rsc_faturamento_mr',
+            deploymentId: 'customdeploy_rsc_faturamento_mr',
+            params: {custscript_rsc_idlote: lote.getValue({ fieldId: 'id' })}
+        });
+        log.debug({ title: 'task.params', details: scriptTask.params });
+        var scriptTaskId = scriptTask.submit();
+
+        var scriptTask1 = task.create({
+            taskType: task.TaskType.MAP_REDUCE,
+            scriptId: 'customscript_rsc_mr_alternativo',
+            deploymentId: 'customdeploy_rsc_mr_alternativo',
+            params: {custscript_rsc_idlote2: lote.getValue({ fieldId: 'id' })}
+        });
+        log.debug({ title: 'task.params', details: scriptTask1.params });
+        var scriptTaskId1 = scriptTask1.submit();
+    }
+~~~
+No trecho acima, chamamos 2 map reduce para rodar depois que o registro é submetido. Neste caso, os map reduce não precisam nem estar programados para rodar a cada determinada quantidade de tempo. Setamos eles como evento único e eles rodarão toda vez que forem chamados.
+
