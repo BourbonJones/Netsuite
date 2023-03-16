@@ -79,6 +79,8 @@ define(['N/ui/serverWidget', 'N/search', 'N/log'], (UI, search, log) => {
 ~~~
 Neste caso, o valor encontrado da pesquisa feita é colocada no campo criado *info*.
 
+OBS: Este exemplo é meramente ilustrativo. Nada garante que rode sem erros no ambiente que você estiver utilizando.
+
 ## User Event
 O **User Event** é um tipo de script aplicado a registros do Netsuite. Ele é capaz tanto de alterar o visual como tratar dados no back-end assim como o Suitelet.
 
