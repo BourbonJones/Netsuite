@@ -2,7 +2,7 @@
 
 ## Conteúdos
 
-### Suitelet
+### UserEvent
 [Código do UserEvent](./Ex2_UserEvent.js)
 * beforeLoad e beforeSubmit
 * search.create
