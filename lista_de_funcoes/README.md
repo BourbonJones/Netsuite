@@ -52,8 +52,10 @@ define(['N/record', 'N/search', 'N/log', 'N/currentRecord', 'N/url'], function (
         ChecarDuplicidade: ChecarDuplicidade
     };
 });
-~~~javascript
+~~~
+
 ## N/file
+
 Serve para menipulção de arquivos. Você pode criar, carregar, excluir arquivos do netsuite (uma gama de tipos de arquivos, desde textos e pdfs até códigos).
 Exemplo em cógido:
 ~~~javascript
@@ -76,10 +78,6 @@ Como utilizado acima, ele é equivalente ao console.log do javscript. Você pode
 ## N/task
 Existem algumas aplicações que você pode chamar rodar um script a partir de outro.
 
-Exemplo:
-~~~javascript
-## N/file
-Serve para menipulção de arquivos. Você pode criar, carregar, excluir arquivos do netsuite (uma gama de tipos de arquivos, desde textos e pdfs até códigos).
 Exemplo em cógido:
 ~~~javascript
 function afterSubmit(context) {
