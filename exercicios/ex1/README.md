@@ -8,6 +8,7 @@
 * setValue e getValue
 
 ### ClientScript
-* Record.create
-* FiledChanged
 * Page init vazio
+* FiledChanged
+* função independente para criar um registro e redirecionar até ele (record.create e url.resolveRecord)
+* window.location.replace
