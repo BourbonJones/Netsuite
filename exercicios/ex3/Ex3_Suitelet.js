@@ -1,35 +1,49 @@
 /**
-*@NApiVersion 2.x
-*@NScriptType Suitelet
-*/
+ * @NApiVersion 2.x
+ * @NScriptType Suitelet
+ */
 
-define([ 'N/search', 'N/log', 'N/https', 'N/url', 'N/record'], function (search, log, https, url, record){
+define(['N/ui/serverWidget'], function(serverWidget) {
+    function onRequest(ctx) {
+        var form = serverWidget.createForm({
+            title: "LRC @ JSON Integração RD",
+            hideNavBar:true
+        });
+        form.clientScriptModulePath = "./Ex3_ClientScript.js"
+        
+        
+        form.addField({
+            id: 'custpage_json',
+            type: serverWidget.FieldType.LONGTEXT,
+            label: "JSON"
+        })
+        
+        form.addField({
+            id: 'custpage_parceiro',
+            type: serverWidget.FieldType.SELECT,
+            label: "Parceiro",
+            source: "partner"
+        })
 
-    function onRequest(ctx){
-        if (ctx.request.method == 'POST') {
-            var requisicao = JSON.parse(ctx.request.body);
-            var registro = record.create({
-                type: "customrecord_lrc_jsonclaudio"
-            });
-            requisicao.leads.forEach(function (lead) {
-                registro.setValue({
-                    fieldId: 'name',
-                    value: lead.name
-                });
-                registro.setValue({
-                    fieldId: 'custrecord_lrc_jsonc',
-                    value: JSON.stringify(lead)
-                });
-                registro.setValue({
-                    fieldId: 'custrecord_lrc_processadoc',
-                    value: 2
-                });
-                registro.save();
-            });
-        }
+        form.addField({
+            id: 'custpage_processado',
+            type: serverWidget.FieldType.SELECT,
+            label: "PROCESSADO/NÃO PROCESSADO",
+            source: "customlist_lrc_processado"
+        })
+        
+        form.addButton({
+            id: 'button',
+            label: "Enviar",
+            functionName: "enviar"
+        })
+  
+        
+  
+        ctx.response.writePage(form);
     }
-
+  
     return {
         onRequest: onRequest
     };
-})
+});
