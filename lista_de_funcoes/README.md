@@ -13,6 +13,7 @@ N/ui/serverWidget |`serverWidget.createForm()`, `ServerWidget.addField()`, `Serv
 N/url |`url.resolveRecord()`, `url.resolveScript()` | [N/url Module](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4358552918.html)
 N/query |`query.create()`, `query.runSuiteQL()` |[N/query Module](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_1510275060.html)
 N/task | `task.create()` | [N/task  Module](https://4847589-sb1.app.netsuite.com/app/help/helpcenter.nl?fid=section_4345787858.html)
+N/redirect | `redirect.redirect()`, `redirect.toRecord()`, `redirect.toSuitelet()` | [N/redirect Module](https://tstdrv2159734.app.netsuite.com/app/help/helpcenter.nl?fid=section_4424286105.html)
 
 PS: Os links só podem ser acessados se você possuir conta no NetSuite.
 
